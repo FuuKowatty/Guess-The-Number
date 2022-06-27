@@ -11,6 +11,7 @@ submitNumb.addEventListener('click', function NumbGame() {
     if(+typeNumb.value === randValue) {
         result.innerHTML = typeNumb.value + " is correct!"
         resetButton.classList.toggle('active');
+        resetGame()
     }
     else {
         let grab = `.heart${count}`;
@@ -22,26 +23,26 @@ submitNumb.addEventListener('click', function NumbGame() {
                 resetButton.classList.toggle('active');
                 result.innerHTML = "lost! correct numb: " + randValue;            
                 typeNumb.setAttribute('disabled', true);
-                resetGame(heart);
+                resetGame();
             
                 
             }    
     }
 })
 
-function resetGame(heart) {
-    resetButton.addEventListener('click', () => {
-        
+        resetButton.addEventListener('click', function resetGame() {
+
+        resetButton.classList.toggle('active');
         result.innerHTML = '';
         typeNumb.value = '';
         typeNumb.removeAttribute('disabled');
         count = 5; 
-        resetButton.classList.toggle('active');
+        
         for(let i = 1; i<6; i++) {
             heart = document.querySelector(`.heart${i}`)
             heart.src = "img/heart.png";
         };
     })
+    
 
-}
 
